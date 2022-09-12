@@ -151,10 +151,10 @@ confirm
 
 git push --set-upstream origin combined-pr-branch --force
 
-echo "Creating PR:\n\n"
+echo "Creating PR"
 PR_URL="$(gh pr create --title 'chore: bump dependencies (Dependabot)' --body-file $BODY_FILE --label dependencies)"
 
+echo -e "\n\PR created - press any key to set auto-merge status or escape to abort"
 confirm
-echo "PR created, trying to set auto merge status"
 gh pr merge --auto --squash "$PR_URL"
 
