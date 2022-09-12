@@ -149,9 +149,10 @@ cat $BODY_FILE
 echo -e "\n\nFinished merging - press any key to create PR or escape to abort"
 confirm
 
-echo "Creating PR"
-PR_URL="$(gh pr create --title 'chore: bump dependencies (Dependabot)' --body-file $BODY_FILE --label dependencies)"
+echo "Creating PR:\n\n"
+PR_URL="$(gh pr create --title 'chore: bump dependencies (Dependabot)' --body-file $BODY_FILE --label dependencies --head)"
 
+confirm
 echo "PR created, trying to set auto merge status"
 gh pr merge --auto --squash "$PR_URL"
 
